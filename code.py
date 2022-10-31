@@ -35,5 +35,5 @@ def game_scene():
 
 
     if__name__ == "__main__":
-       game_scene()
+        game_scene()
     
