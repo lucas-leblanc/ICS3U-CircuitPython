@@ -34,6 +34,6 @@ def game_scene():
         pass  # just a placeholder for now
 
 
-    if__name__ == "__main__":
-        game_scene()
+if__name__ == "__main__":
+    game_scene()
     
