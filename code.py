@@ -12,7 +12,7 @@ def game_scene():
     # his function is the main game game_scene 
 
 #image banks for CircuitPython
-image_bank_background = stage.Bank.from_bmp("space_aliens_background.bpm")
+image_bank_background = stage.Bank.from_bmp16("space_aliens_background.bpm")
 
 # set the background to image 0 in the image bank
 #   and the size (10x8 tiles of size 16x16)
