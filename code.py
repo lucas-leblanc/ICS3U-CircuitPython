@@ -11,7 +11,7 @@ import stage
 def game_scene():
     # his function is the main game game_scene 
 
-#image banks for CircuitPython
+# image banks for CircuitPython
 image_bank_background = stage.Bank.from_bmp16("space_aliens_background.bmp")
 
 # set the background to image 0 in the image bank
