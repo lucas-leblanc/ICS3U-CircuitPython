@@ -27,7 +27,7 @@ def game_scene():
     game = stage.Stage(ugame.display, 60)
 
     # set the layers of all sprites, items show up in order
-    game.layers = [background]
+    game.layers = [ship] + [background]
 
     # render all sprites
     #   most likely you will only render the background once per game scene
