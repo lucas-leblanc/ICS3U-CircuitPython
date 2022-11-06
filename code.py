@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 # Created by: Lucas LeBlanc
-# Created on: Oct 2022
+# Created on: Nov 2022
 # This program is the "Space Aliens" program on the PyBadge
 
 import constants
@@ -61,4 +61,3 @@ def game_scene():
 
 if __name__ == "__main__":
     game_scene()
-    
