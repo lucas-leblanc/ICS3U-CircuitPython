@@ -49,7 +49,7 @@ def game_scene():
     game = stage.Stage(ugame.display, 60)
 
     # set the layers of all sprites, items show up in order
-    game.layers = [ship] + [aliens] + [background]
+    game.layers = [ship] + [alien] + [background]
 
     # render all sprites
     #   most likely you will only render the background once per game scene
@@ -86,7 +86,7 @@ def game_scene():
             
         # update game logic
         # play sound if A was just button_just_pressed
-        if a_button == constants_state["button_just_pressed"]:
+        if a_button == constants.button_state["button_just_pressed"]:
             sound.play(pew_sound)
 
         # redraw Sprite
