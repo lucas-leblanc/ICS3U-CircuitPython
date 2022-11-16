@@ -174,64 +174,64 @@ def game_scene():
    # render all sprites
    game.render_block()
 
-   # repeat forever, game loop
-   while True:
-       # get user input
-       keys = ugame.buttons.get_pressed()
-       if keys & ugame.K_X != 0:
+    # repeat forever, game loop
+    while True:
+        # get user input
+        keys = ugame.buttons.get_pressed()
+        if keys & ugame.K_X != 0:
            if a_button == constants.button_state["button_up"]:
                a_button = constants.button_state["button_just_pressed"]
            elif a_button == constants.button_state["button_just_pressed"]:
                a_button = constants.button_state["button_still_pressed"]
-       else:
+        else:
            if a_button == constants.button_state["button_still_pressed"]:
                a_button = constants.button_state["button_released"]
            else:
                a_button = constants.button_state["button_up"]
-       if keys & ugame.K_O:
+        if keys & ugame.K_O:
            pass
-       if keys & ugame.K_START:
+        if keys & ugame.K_START:
            pass
-       if keys & ugame.K_SELECT:
+        if keys & ugame.K_SELECT:
            pass
-       if keys & ugame.K_RIGHT != 0:
+        if keys & ugame.K_RIGHT != 0:
            if ship.x <= (constants.SCREEN_X - constants.SPRITE_SIZE):
                ship.move((ship.x + constants.SPRITE_MOVEMENT_SPEED), ship.y)
            else:
                ship.move((constants.SCREEN_X - constants.SPRITE_SIZE), ship.y)
 
-       if keys & ugame.K_LEFT != 0:
+        if keys & ugame.K_LEFT != 0:
            if ship.x >= 0:
                ship.move((ship.x - constants.SPRITE_MOVEMENT_SPEED), ship.y)
            else:
                ship.move(0, ship.y)
-       if keys & ugame.K_UP:
+        if keys & ugame.K_UP:
            pass
-       if keys & ugame.K_DOWN:
+        if keys & ugame.K_DOWN:
            pass
         
-# update game logic
-# play sound if A was just button_just_pressed
-       if a_button == constants.button_state["button_just_pressed"]:
-           # fire a laser, if we have enough power (have not used up all the lasers)
-           for laser_number in range(len(lasers)):
-            if lasers[laser_number].x < 0:
-                lasers[laser_number].move(ship.x, ship.y)
-           sound.play(pew_sound)
-           break
+        # update game logic
+        # play sound if A was just button_just_pressed
+            if a_button == constants.button_state["button_just_pressed"]:
+                # fire a laser, if we have enough power (have not used up all the lasers)
+                for laser_number in range(len(lasers)):
+                    if lasers[laser_number].x < 0:
+                        lasers[laser_number].move(ship.x, ship.y)
+                sound.play(pew_sound)
+                break
 
-# each frame move the lasers, that have been fired up
-for laser_number in range(len(lasers)):
-    if lasers[laser_number].x > 0:
-        lasers[laser_number].move(lasers[laser_number].x,
-                                  lasers[laser_number].y -
-                                    constants.LASER_SPEED)
-        if lasers[laser_number].y < constants.OFF_TOP_SCREEN:
-            lasers[laser_number].move(constants.OFF_SCREEN_X,
-                                      constants.OFF_SCREEN_Y)
-       # redraw Sprite
-       game.render_sprites(lasers + [ship] + [alien])
-       game.tick() # wait until refresh rate finishes
+        # each frame move the lasers, that have been fired up
+        for laser_number in range(len(lasers)):
+            if lasers[laser_number].x > 0:
+                lasers[laser_number].move(lasers[laser_number].x,
+                                        lasers[laser_number].y -
+                                            constants.LASER_SPEED)
+                if lasers[laser_number].y < constants.OFF_TOP_SCREEN:
+                    lasers[laser_number].move(constants.OFF_SCREEN_X,
+                                            constants.OFF_SCREEN_Y)
+        # redraw Sprite
+        game.render_sprites(lasers + [ship] + [alien])
+        game.tick() # wait until refresh rate finishes
 
 
 if __name__ == "__main__":
