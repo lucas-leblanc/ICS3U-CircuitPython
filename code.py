@@ -158,7 +158,7 @@ def game_scene():
     )
 
     #create list of lasers for when we shoot
-    laser = []
+    lasers = []
     for laser_number in range(constants.TOTAL_NUMBER_OF_LASERS):
         a_single_laser = stage.Sprite(image_bank_sprites, 10,
                                       constants.OFF_SCREEN_X,
@@ -169,7 +169,7 @@ def game_scene():
     #  and set the frame rate to 60 fps
     game = stage.Stage(ugame.display, 60)
     # set the layers of all sprites, items show up in order
-    game.layers = lasers +[lship] + [alien] + [background]
+    game.layers = lasers + [ship] + [alien] + [background]
 
     # render all sprites
     game.render_block()
@@ -225,4 +225,4 @@ def game_scene():
 
 
 if __name__ == "__main__":
-    menu_scene(
+    menu_scene()
