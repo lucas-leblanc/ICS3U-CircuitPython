@@ -161,7 +161,7 @@ def game_scene():
    laser = []
    for laser_number in range(constants.TOTAL_NUMBER_OF_LASERS):
         a_single_laser = stage.Sprite(image_bank_sprites, 10,
-                                      constants.OFF_SCREEN_X
+                                      constants.OFF_SCREEN_X,
                                       constants.OFF_SCREEN_Y)
         lasers.append(a_single_laser)
 
