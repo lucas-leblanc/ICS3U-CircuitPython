@@ -221,12 +221,12 @@ def game_scene():
            break
 
 # each frame move the lasers, that have been fired up
-for laser_number in range(len(lasers))
+for laser_number in range(len(lasers)):
     if lasers[laser_number].x > 0:
         lasers[laser_number].move(lasers[laser_number].x,
-                                         laser[laser_number].y -
+                                  lasers[laser_number].y -
                                            constants.LASER_SPEED)
-            if lasers[laser_number].x < constants.OFF_TOP_SCREEN:
+            if lasers[laser_number].y < constants.OFF_TOP_SCREEN:
                 lasers[laser_number].move(constants.OFF_SCREEN_X,
                                           constants.OFF_SCREEN_Y)
        # redraw Sprite
