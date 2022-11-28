@@ -136,6 +136,13 @@ def game_scene():
                 break
 
     # for score
+    score = 0
+
+    score_text = stage.Text(width=29, height=14, font=None, palette=constants.RED_PALETTE, buffer=None)
+    score_text.clear()
+    score_text.cursor(0,0)
+    score_text.move(1,1)
+    score_text.text("Score: {0}".format(score))
     alien_count = 0
 
     # image banks for CircuitPython
@@ -191,7 +198,7 @@ def game_scene():
     #   and set the frame rate to 60 fps
     game = stage.Stage(ugame.display, 60)
     # set the layers of all sprites, items show up in order
-    game.layers = aliens + lasers + [ship] + [background]
+    game.layers = [score_text] + aliens + lasers + [ship] + [background]
     # render all sprites
     #   most likely you will only render the background once per game scene
     game.render_block()
@@ -256,6 +263,11 @@ def game_scene():
                         constants.OFF_SCREEN_X, constants.OFF_SCREEN_Y
                     )
                     show_alien()
+                    score -= 1
+                    score_text.clear()
+                    score_text.cursor(0,0)
+                    score_text.move(1,1)
+                    score_text.text("Score:{0}".format(score))
 
         # each frame check if any of the lasers are touching any of the aliens
         for laser_number in range (len(lasers)):
@@ -269,11 +281,18 @@ def game_scene():
                             # you hit an alien
                             aliens[alien_number].move(constants.OFF_SCREEN_X, constants.OFF_SCREEN_Y)
                             lasers[laser_number].move(constants.OFF_SCREEN_X, constants.OFF_SCREEN_Y)
+                            # add 1 to score
+                            score += 1
+                            score_text.clear()
+                            score_text.cursor(0,0)
+                            score_text.move(1,1)
+                            score_text.text("Score: {0}".format(score))
                             sound.stop()
                             sound.play(boom_sound)
                             show_alien()
                             show_alien()
                             alien_count = alien_count + 1
+                            score = score + 1
 
         # redraw Sprite
         game.render_sprites(aliens + lasers + [ship])
